@@ -583,38 +583,37 @@
 
         document.getElementById('researchForm').addEventListener('submit', async function(e) {
             e.preventDefault(); // Ngăn không cho form gửi đi theo cách thông thường
-
+    
+            // Lấy thời gian hiện tại và dữ liệu từ biểu mẫu
             const currentTime = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
-
             const formData = new FormData(this);
+    
+            // Thêm thời gian vào formData
             formData.append('time', currentTime);
-
-            // Thay đổi URL dưới đây thành URL của Google Apps Script của bạn
-            const googleSheetsURL = 'https://script.google.com/macros/s/AKfycbxKrkJt3g170gUolJUKqwP7Nv9pvyMXmufMIni5Q9tzpbU-dHAqqPypyzBnXTv5_AEh/exec';
-
+    
+            // Đặt URL của Google Apps Script của bạn
+            const googleSheetsURL = 'https://script.google.com/macros/s/AKfycbwWrgOFwJyXySdipvo3EY7vv0Xsw-jnCRTIWC2KrqCdW9ULBsv8ioG5jb8mYCq7JrAn/exec';
+            // Chuyển formData thành đối tượng JSON
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            // In dữ liệu JSON ra console trước khi gửi
+            console.log("Dữ liệu JSON sẽ gửi:", JSON.stringify(data));
             try {
-                const response = await fetch(googleSheetsURL, {
-                    method: 'POST',
-                    body: formData,
-                    mode:'no-cors'
-                    
-                    });
-                    console.log(response);
-                    formData.forEach((value, key) => {
-                        console.log(key + ": " + value);
-                    });
-                    
-                if (response.ok) {
-                    // Hiển thị thông báo thành công và reset form
-                    alert('Mẫu của bạn đã được gửi thành công!');
-                    location.reload(); // Làm mới lại trang sau khi người dùng nhấn "OK"
-                } else {
-                    throw new Error('Có lỗi xảy ra khi gửi mẫu');
-                }
+                // Gửi dữ liệu đến Google Sheets
+                await fetch(googleSheetsURL, { 
+                    method: 'POST', 
+                    body: formData
+                     // Không cần phản hồi từ server (nếu cần phản hồi, hãy xóa dòng này)
+                });            
+ 
+                console.log("Dữ liệu đã được gửi thành công tới Google Sheets!");
+                alert("Dữ liệu đã được lưu lại thành công!");
             } catch (error) {
-                console.error("Error submitting result to Google Sheets:", error);
-                alert('Có lỗi xảy ra khi gửi mẫu. Vui lòng thử lại.');
-            }
+                console.error("Lỗi khi gửi dữ liệu tới Google Sheets:", error);
+                alert("Lỗi khi gửi mẫu. Vui lòng thử lại.");
+            } 
         });
 
     </script>
