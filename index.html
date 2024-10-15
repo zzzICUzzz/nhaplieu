@@ -142,7 +142,7 @@
 <body>
 
     <h1>Mẫu Thu Thập Số Liệu Nghiên Cứu</h1>
-    <form action="" method="post">
+    <form id="researchForm" action="" method="post" >
         <!-- Thông Tin Chung -->
         <label for="1.ma-so-nghien-cuu">1. Mã số nghiên cứu:</label>
         <input type="text" id="1.ma-so-nghien-cuu" name="ma-so-nghien-cuu">
@@ -593,7 +593,17 @@
             const googleSheetsURL = 'https://script.google.com/macros/s/AKfycbxKrkJt3g170gUolJUKqwP7Nv9pvyMXmufMIni5Q9tzpbU-dHAqqPypyzBnXTv5_AEh/exec';
 
             try {
-                const response = await fetch(googleSheetsURL, { method: 'POST', body: formData });
+                const response = await fetch(googleSheetsURL, {
+                    method: 'POST',
+                    body: formData,
+                    mode:'no-cors'
+                    
+                    });
+                    console.log(response);
+                    formData.forEach((value, key) => {
+                        console.log(key + ": " + value);
+                    });
+                    
                 if (response.ok) {
                     // Hiển thị thông báo thành công và reset form
                     alert('Mẫu của bạn đã được gửi thành công!');
