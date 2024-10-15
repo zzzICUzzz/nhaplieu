@@ -580,6 +580,33 @@
                 totalScoreElement.value = totalScore;
             });
         });
+
+        document.getElementById('researchForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Ngăn không cho form gửi đi theo cách thông thường
+
+            const currentTime = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+
+            const formData = new FormData(this);
+            formData.append('time', currentTime);
+
+            // Thay đổi URL dưới đây thành URL của Google Apps Script của bạn
+            const googleSheetsURL = 'https://script.google.com/macros/s/AKfycbxKrkJt3g170gUolJUKqwP7Nv9pvyMXmufMIni5Q9tzpbU-dHAqqPypyzBnXTv5_AEh/exec';
+
+            try {
+                const response = await fetch(googleSheetsURL, { method: 'POST', body: formData });
+                if (response.ok) {
+                    // Hiển thị thông báo thành công và reset form
+                    alert('Mẫu của bạn đã được gửi thành công!');
+                    location.reload(); // Làm mới lại trang sau khi người dùng nhấn "OK"
+                } else {
+                    throw new Error('Có lỗi xảy ra khi gửi mẫu');
+                }
+            } catch (error) {
+                console.error("Error submitting result to Google Sheets:", error);
+                alert('Có lỗi xảy ra khi gửi mẫu. Vui lòng thử lại.');
+            }
+        });
+
     </script>
 
 </body>
