@@ -4,86 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mẫu Thu Thập Số Liệu Nghiên Cứu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        .section-title {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        .sub-section {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        .checkbox-group, .radio-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .checkbox-group label, .radio-group label {
-            font-weight: normal;
-            margin-top: 5px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr.checked-row {
-            background-color: #d4edda; /* Màu nền xanh nhạt khi được tick */
-        }
-        td input[type="checkbox"] {
-            transform: scale(1.5); /* Tăng kích thước checkbox */
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -103,7 +24,7 @@
         <input type="text" id="4-dia-chi" name="4-dia-chi">
 
         <label for="so-dien-thoai">5. Số điện thoại:</label>
-        <input type="text" id="5-so-dien-thoai" name="5-so-dien-thoai">
+        <input type="number" id="5-so-dien-thoai" name="5-so-dien-thoai">
 
         <label for="ngay-phong-van">6. Ngày phỏng vấn:</label>
         <input type="date" id="6-ngay-phong-van" name="6-ngay-phong-van">
@@ -199,7 +120,7 @@
         Đang hút - Số gói – năm: 
         <input type="radio" name="15-hut-thuoc-la" value="5">
         <span class="checkmark"></span>
-        <input type="number" name="15-hut-thuoc-la-so-goi-nam" min="0" placeholder="Số gói">
+        <input type="number" name="15-hut-thuoc-la-so-goi-nam" min="0" placeholder="Số gói.năm">
     </label>
 </div>
 
@@ -376,7 +297,7 @@
     </tr>
     <tr>
         <th colspan="2">Tổng điểm</th>
-        <th><input type="text" id="total-score-charlson" readonly></th>
+        <th><input type="text" id="total-score-charlson" name="21-diem-charlson" readonly></th>
     </tr>
 </table>
 <h2>III. ĐÁNH GIÁ THIẾU CƠ – LOÃNG XƯƠNG:</h2>
@@ -393,64 +314,64 @@
     <tbody>
         <tr>
             <td>L1</td>
-            <td><input type="text" name="mdx-l1"></td>
-            <td><input type="text" name="t-score-l1"></td>
+            <td><input type="number" name="mdx-l1"></td>
+            <td><input type="number" name="t-score-l1"></td>
         </tr>
         <tr>
             <td>L2</td>
-            <td><input type="text" name="mdx-l2"></td>
-            <td><input type="text" name="t-score-l2"></td>
+            <td><input type="number" name="mdx-l2"></td>
+            <td><input type="number" name="t-score-l2"></td>
         </tr>
         <tr>
             <td>L3</td>
-            <td><input type="text" name="mdx-l3"></td>
-            <td><input type="text" name="t-score-l3"></td>
+            <td><input type="number" name="mdx-l3"></td>
+            <td><input type="number" name="t-score-l3"></td>
         </tr>
         <tr>
             <td>L4</td>
-            <td><input type="text" name="mdx-l4"></td>
-            <td><input type="text" name="t-score-l4"></td>
+            <td><input type="number" name="mdx-l4"></td>
+            <td><input type="number" name="t-score-l4"></td>
         </tr>
         <tr>
             <td>L1 – L4</td>
-            <td><input type="text" name="mdx-l1-l4"></td>
-            <td><input type="text" name="t-score-l1-l4"></td>
+            <td><input type="number" name="mdx-l1-l4"></td>
+            <td><input type="number" name="t-score-l1-l4"></td>
         </tr>
         <tr>
             <td>Xương vùng hông - Total</td>
-            <td><input type="text" name="mdx-total"></td>
-            <td><input type="text" name="t-score-total"></td>
+            <td><input type="number" name="mdx-total"></td>
+            <td><input type="number" name="t-score-total"></td>
         </tr>
         <tr>
             <td>Xương vùng hông - Neck</td>
-            <td><input type="text" name="mdx-neck"></td>
-            <td><input type="text" name="t-score-neck"></td>
+            <td><input type="number" name="mdx-neck"></td>
+            <td><input type="number" name="t-score-neck"></td>
         </tr>
     </tbody>
 </table>
 
-<h3>24. Khối lượng cơ xương (ASM) bằng phương pháp DXA: <input type="text" name="24-khoi-luong-co-xuong" style="display: inline; width: 20%; margin-left: 10px;"></h3>
+<h3>24. Khối lượng cơ xương (ASM) bằng phương pháp DXA: <input type="number" name="24-khoi-luong-co-xuong" style="display: inline; width: 20%; margin-left: 10px;"></h3>
 
 <h3>25. Chỉ số cơ xương SMI = ASM/chiều cao²: 
-    <input type="text" name="25-smi" style="display: inline; width: 20%; margin-left: 10px;">
+    <input type="number" name="25-smi" style="display: inline; width: 20%; margin-left: 10px;">
 </h3>
 
 <h3>26. Lực bóp tay trái: 
-    Lần 1: <input type="text" name="26-luc-bop-trai-lan-1" style="display: inline; width: 15%; margin-left: 10px;">
-    Lần 2: <input type="text" name="26-luc-bop-trai-lan-2" style="display: inline; width: 15%; margin-left: 10px;">
+    Lần 1: <input type="number" name="26-luc-bop-trai-lan-1" style="display: inline; width: 15%; margin-left: 10px;">
+    Lần 2: <input type="number" name="26-luc-bop-trai-lan-2" style="display: inline; width: 15%; margin-left: 10px;">
     <label style="display: inline; margin-left: 10px;"><input type="checkbox" name="tay-thuan-trai"> Tay thuận</label>
 </h3>
 
 <h3>27. Lực bóp tay phải: 
-    Lần 1: <input type="text" name="27-luc-bop-phai-lan-1" style="display: inline; width: 15%; margin-left: 10px;">
-    Lần 2: <input type="text" name="27-luc-bop-phai-lan-2" style="display: inline; width: 15%; margin-left: 10px;">
+    Lần 1: <input type="number" name="27-luc-bop-phai-lan-1" style="display: inline; width: 15%; margin-left: 10px;">
+    Lần 2: <input type="number" name="27-luc-bop-phai-lan-2" style="display: inline; width: 15%; margin-left: 10px;">
     <label style="display: inline; margin-left: 10px;"><input type="checkbox" name="tay-thuan-phai"> Tay thuận</label>
 </h3>
 
 
-<h3>Giá trị cao nhất: <input type="text" name="gia-tri-cao-nhat" style="display: inline; width: 50%;"></h3>
+<h3>Giá trị cao nhất: <input type="number" name="gia-tri-cao-nhat" style="display: inline; width: 50%;"></h3>
 
-<h3>28. Thời gian đi bộ 6m (giây): <input type="text" name="28-thoi-gian-di-bo-6m" style="display: inline; width: 20%;"> giây</h3>
+<h3>28. Thời gian đi bộ 6m (giây): <input type="number" name="28-thoi-gian-di-bo-6m" style="display: inline; width: 20%;"> giây</h3>
 
 <h2>IV. Cận lâm sàng</h2>
 
@@ -466,33 +387,33 @@
     <tbody>
         <tr>
             <td>Osteocalcin</td>
-            <td><input type="text" name="osteocalcin"></td>
+            <td><input type="number" name="osteocalcin"></td>
             <td>Urea</td>
-            <td><input type="text" name="urea"></td>
+            <td><input type="number" name="urea"></td>
         </tr>
         <tr>
             <td>Beta CTX</td>
-            <td><input type="text" name="betactx"></td>
+            <td><input type="number" name="betactx"></td>
             <td>Creatinin</td>
-            <td><input type="text" name="creatinin"></td>
+            <td><input type="number" name="creatinin"></td>
         </tr>
         <tr>
             <td>Hb</td>
-            <td><input type="text" name="hb"></td>
+            <td><input type="number" name="hb"></td>
             <td>Calci toàn phần</td>
-            <td><input type="text" name="calcitotal"></td>
+            <td><input type="number" name="calcitotal"></td>
         </tr>
         <tr>
             <td>Số lượng hồng cầu</td>
-            <td><input type="text" name="slhongcau"></td>
+            <td><input type="number" name="slhongcau"></td>
             <td>AST</td>
-            <td><input type="text" name="ast"></td>
+            <td><input type="number" name="ast"></td>
         </tr>
         <tr>
             <td>Số lương bạch cầu</td>
-            <td><input type="text" name="slbachcau"></td>
+            <td><input type="number" name="slbachcau"></td>
             <td>ALT</td>
-            <td><input type="text" name="ALT"></td>
+            <td><input type="number" name="ALT"></td>
         </tr>
         <tr>
             <td>số lượng tiểu cầu</td>
@@ -505,68 +426,7 @@
         <button type="submit">Gửi</button>
     </form>
 
-    <script>
-        document.getElementById('researchForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); // Ngăn không cho form gửi đi theo cách thông thường
-        
-            // Lấy thời gian hiện tại và dữ liệu từ biểu mẫu
-            const currentTime = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
-            const formData = new FormData(this);
-            
-            // Thêm thời gian vào formData
-            formData.append('time', currentTime);
-            
-            // Xử lý tất cả các trường checkbox
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach((checkbox) => {
-                if (checkbox.checked) {
-                    formData.append(checkbox.name, checkbox.value || checkbox.getAttribute('data-score'));
-                } else {
-                    formData.append(checkbox.name, "0");  // Nếu không chọn, gán giá trị mặc định
-                }
-            });
-        
-            // Xử lý các radio button để đảm bảo chúng có giá trị
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach((radio) => {
-                if (radio.checked) {
-                    formData.append(radio.name, radio.value);
-                } else if (!formData.has(radio.name)) {
-                    formData.append(radio.name, "N/A");  // Gán giá trị mặc định nếu radio không được chọn
-                }
-            });
-        
-            // Chuyển formData thành đối tượng JSON
-            const data = {};
-            formData.forEach((value, key) => {
-                if (value === "") {
-                    data[key] = "N/A"; // Gán giá trị mặc định nếu trường trống
-                } else {
-                    data[key] = value;
-                }
-            });
-            
-            // In dữ liệu JSON ra console trước khi gửi
-            console.log("Dữ liệu JSON sẽ gửi:", JSON.stringify(data));
-            try {
-                // Gửi dữ liệu đến Google Sheets với mode: 'no-cors'
-                await fetch('https://script.google.com/macros/s/AKfycbyS1-3lkA3hZKrNvG76o836px3N0jIkkTM4QwVM2tPM7R0CXigko-XT7rT8q5C1yE2zqg/exec', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });            
-                
-                console.log("Dữ liệu đã được gửi thành công tới Google Sheets!");
-                alert("Dữ liệu đã được lưu lại thành công!");
-            } catch (error) {
-                console.error("Lỗi khi gửi dữ liệu tới Google Sheets:", error);
-                alert("Lỗi khi gửi mẫu. Vui lòng thử lại.");
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

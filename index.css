@@ -1,0 +1,116 @@
+body{
+font-family: Arial, sans-serif;
+margin: 20px;
+padding: 20px;
+background-color: #f4f4f9;
+max-width: 800px;
+margin: 0 auto;
+}
+form {
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+label {
+display: flex;
+align-items: center;
+font-weight: bold;
+margin-top: 10px;
+}
+input, select, textarea {
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+border-radius: 4px;
+border: 1px solid #ccc;
+}
+.section-title {
+margin-top: 20px;
+font-size: 1.2em;
+color: #333;
+text-transform: uppercase;
+font-weight: bold;
+}
+button {
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #28a745;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+button:hover {
+background-color: #218838;
+}
+.checkbox-group, .radio-group {
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+}
+.checkbox-group label, .radio-group label {
+font-weight: normal;
+margin-top: 5px;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0;
+}
+table, th, td {
+border: 1px solid black;
+}
+th, td {
+padding: 8px;
+text-align: left;
+}
+th {
+background-color: #f2f2f2;
+}
+tr.checked-row {
+background-color: #d4edda;
+}
+td input[type="checkbox"] {
+transform: scale(1.5);
+}
+.error-message-ticket {
+background-color: #ffecb3;
+color: #ff6f00;
+border: 1px solid #ffb74d;
+border-radius: 5px;
+padding: 10px;
+margin-top: 5px;
+max-width: 300px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+font-size: 0.9em;
+position: relative;
+}
+.error-message-ticket::before {
+content: '';
+position: absolute;
+top: -10px;
+left: 10px;
+border-width: 0 10px 10px 10px;
+border-style: solid;
+border-color: transparent transparent #ffecb3 transparent;
+}
+.radio-group label {
+display: flex;
+align-items: center;
+padding: 10px;
+border-radius: 5px;
+transition: background-color 0.2s;
+margin-bottom: 5px;
+}
+.radio-group label.selected {
+background-color: #e6f7ff;
+}
+.radio-group input[type="radio"] {
+margin-right: 10px;
+transform: scale(1.2);
+}
+.radio-group input[type="number"] {
+margin-left: 10px;
+display: none;
+}
