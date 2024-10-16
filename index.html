@@ -62,60 +62,6 @@
             font-weight: normal;
             margin-top: 5px;
         }
-        .radio-group label {
-            display: block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            font-size: 18px;
-            user-select: none;
-        }
-    
-        .radio-group input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-    
-        /* Thiết kế hình dạng ô chọn (radio button) */
-        .radio-group .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 50%;
-            border: 2px solid #ccc;
-        }
-    
-        /* Tô màu khi radio được chọn */
-        .radio-group input:checked ~ .checkmark {
-            background-color: #28a745;
-            border-color: #28a745;
-        }
-    
-        /* Đánh dấu khi được chọn */
-        .radio-group .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-    
-        .radio-group input:checked ~ .checkmark:after {
-            display: block;
-        }
-    
-        /* Thiết kế đánh dấu chọn */
-        .radio-group .checkmark:after {
-            top: 7px;
-            left: 7px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: white;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -560,27 +506,6 @@
     </form>
 
     <script>
-        const checkboxes = document.querySelectorAll('.score-checkbox');
-        const totalScoreElement = document.getElementById('total-score-charlson');
-    
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                let totalScore = 0;
-    
-                checkboxes.forEach(cb => {
-                    const row = cb.closest('tr'); // Lấy dòng của checkbox hiện tại
-                    if (cb.checked) {
-                        totalScore += parseInt(cb.getAttribute('data-score'));
-                        row.classList.add('checked-row'); // Thêm lớp để đổi màu
-                    } else {
-                        row.classList.remove('checked-row'); // Xóa lớp để trở về màu gốc
-                    }
-                });
-    
-                totalScoreElement.value = totalScore;
-            });
-        });
-
         document.getElementById('researchForm').addEventListener('submit', async function(e) {
             e.preventDefault(); // Ngăn không cho form gửi đi theo cách thông thường
         
@@ -591,24 +516,34 @@
             // Thêm thời gian vào formData
             formData.append('time', currentTime);
             
-            // Xử lý các checkbox và radio button để đảm bảo dữ liệu được gửi đúng cách
-            const checkboxes = document.querySelectorAll('.score-checkbox');
+            // Xử lý tất cả các trường checkbox
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach((checkbox) => {
                 if (checkbox.checked) {
-                    formData.append(checkbox.name, checkbox.getAttribute('data-score'));
+                    formData.append(checkbox.name, checkbox.value || checkbox.getAttribute('data-score'));
+                } else {
+                    formData.append(checkbox.name, "0");  // Nếu không chọn, gán giá trị mặc định
                 }
             });
         
-            // Radio buttons: Thêm kiểm tra các radio button để đảm bảo chúng có giá trị
-            const radios = document.querySelectorAll('input[type="radio"]:checked');
+            // Xử lý các radio button để đảm bảo chúng có giá trị
+            const radios = document.querySelectorAll('input[type="radio"]');
             radios.forEach((radio) => {
-                formData.append(radio.name, radio.value);
+                if (radio.checked) {
+                    formData.append(radio.name, radio.value);
+                } else if (!formData.has(radio.name)) {
+                    formData.append(radio.name, "N/A");  // Gán giá trị mặc định nếu radio không được chọn
+                }
             });
         
             // Chuyển formData thành đối tượng JSON
             const data = {};
             formData.forEach((value, key) => {
-                data[key] = value;
+                if (value === "") {
+                    data[key] = "N/A"; // Gán giá trị mặc định nếu trường trống
+                } else {
+                    data[key] = value;
+                }
             });
             
             // In dữ liệu JSON ra console trước khi gửi
@@ -631,8 +566,6 @@
                 alert("Lỗi khi gửi mẫu. Vui lòng thử lại.");
             }
         });
-        
-
     </script>
 
 </body>
