@@ -220,8 +220,10 @@ const checkboxes = document.querySelectorAll('.score-checkbox');
                     body: JSON.stringify(data)
                 });
                 
-                console.log("Dữ liệu đã được gửi thành công tới Google Sheets!");
-                alert("Dữ liệu đã được lưu lại thành công!");
+                // Hiển thị thông báo thành công và reload trang nếu người dùng nhấn OK
+        if (confirm("Dữ liệu đã được lưu lại thành công! Nhấn OK để làm mới trang.")) {
+            location.reload(); // Reload lại trang sau khi nhấn OK
+        }
             } catch (error) {
                 console.error("Lỗi khi gửi dữ liệu tới Google Sheets:", error);
                 alert("Lỗi khi gửi mẫu. Vui lòng thử lại.");
