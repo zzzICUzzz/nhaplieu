@@ -154,39 +154,20 @@ const checkboxes = document.querySelectorAll('.score-checkbox');
             });
         });
 
-
         document.getElementById('researchForm').addEventListener('submit', async function(e) {
             e.preventDefault(); // Ngăn không cho form gửi đi theo cách thông thường
         
-            // Lấy thời gian hiện tại và dữ liệu từ biểu mẫu
+            // Lấy thời gian hiện tại
             const currentTime = new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+            
+            // Thu thập dữ liệu từ biểu mẫu
             const formData = new FormData(this);
             
-            // Thêm thời gian vào formData
-            formData.append('time', currentTime);
-            
-            // Xử lý tất cả các trường checkbox
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach((checkbox) => {
-                if (checkbox.checked) {
-                    formData.append(checkbox.name, checkbox.value || checkbox.getAttribute('data-score'));
-                } else {
-                    formData.append(checkbox.name, "0");  // Nếu không chọn, gán giá trị mặc định
-                }
-            });
-        
-            // Xử lý các radio button để đảm bảo chúng có giá trị
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach((radio) => {
-                if (radio.checked) {
-                    formData.append(radio.name, radio.value);
-                } else if (!formData.has(radio.name)) {
-                    formData.append(radio.name, "N/A");  // Gán giá trị mặc định nếu radio không được chọn
-                }
-            });
-        
-            // Chuyển formData thành đối tượng JSON
+            // Chuyển formData thành đối tượng JSON theo thứ tự
             const data = {};
+            data['time'] = currentTime; // Thêm ngày giờ gửi
+            
+            // Lấy các trường từ biểu mẫu theo thứ tự
             formData.forEach((value, key) => {
                 if (value === "") {
                     data[key] = "N/A"; // Gán giá trị mặc định nếu trường trống
@@ -194,9 +175,40 @@ const checkboxes = document.querySelectorAll('.score-checkbox');
                     data[key] = value;
                 }
             });
-            
+        
+            // Phần 21: Chỉ số đa bệnh lý Charlson
+            const checkboxes = document.querySelectorAll('input[type="checkbox"].score-checkbox');
+            checkboxes.forEach((checkbox) => {
+                const rowName = checkbox.closest('tr').querySelector('td').innerText.trim();
+                if (checkbox.checked) {
+                    data[rowName] = "1";
+                } else {
+                    data[rowName] = "0";
+                }
+            });
+        
+            // Phần 22: Đánh giá hoạt động thể lực, lấy giá trị từ input của từng phần
+            const physicalActivityParts = ['P1', 'P2', 'P2a', 'P3', 'P4', 'P4a', 'P5', 'P6', 'P6a', 'P7', 'P7a'];
+            physicalActivityParts.forEach(part => {
+                const inputElement = document.getElementById(`numberInput${part}`);
+                if (inputElement && inputElement.value) {
+                    data[`Phần ${part}`] = inputElement.value;
+                } else {
+                    data[`Phần ${part}`] = "N/A";
+                }
+            });
+        
+            // Phần 26 và 27: Tay thuận (thay vì checkbox, giờ là radio để chọn tay thuận)
+            const dominantHand = document.querySelector('input[name="dominant-hand"]:checked');
+            if (dominantHand) {
+                data['tay-thuan'] = dominantHand.value; // Gửi thông tin tay thuận
+            } else {
+                data['tay-thuan'] = "Không chọn tay thuận";
+            }
+        
             // In dữ liệu JSON ra console trước khi gửi
             console.log("Dữ liệu JSON sẽ gửi:", JSON.stringify(data));
+        
             try {
                 // Gửi dữ liệu đến Google Sheets với mode: 'no-cors'
                 await fetch('https://script.google.com/macros/s/AKfycbyS1-3lkA3hZKrNvG76o836px3N0jIkkTM4QwVM2tPM7R0CXigko-XT7rT8q5C1yE2zqg/exec', {
@@ -206,7 +218,7 @@ const checkboxes = document.querySelectorAll('.score-checkbox');
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
-                });            
+                });
                 
                 console.log("Dữ liệu đã được gửi thành công tới Google Sheets!");
                 alert("Dữ liệu đã được lưu lại thành công!");
@@ -215,3 +227,40 @@ const checkboxes = document.querySelectorAll('.score-checkbox');
                 alert("Lỗi khi gửi mẫu. Vui lòng thử lại.");
             }
         });
+        
+
+// Bảng điểm 22. Đánh giá hoạt động thể lực
+function showInput(inputId) {
+    document.getElementById(inputId).style.display = 'inline-block';
+}
+
+function hideInput(inputId) {
+    document.getElementById(inputId).style.display = 'none';
+}
+// Tô màu cho các tùy chọn từ 15 đến 20
+document.addEventListener("DOMContentLoaded", function() {
+    const radioGroups = ['15-hut-thuoc-la',
+                         '16-uong-ruou-bia',
+                         '17-tien-su-te-nga',
+                         '18-tien-su-gay-xuong-ban-than',
+                         '19-tien-su-nguoi-than-truc-he', 
+                         '20-tien-su-su-dung-corticoid'
+                        ];
+
+    radioGroups.forEach(groupName => {
+        const radioLabels = document.querySelectorAll(`.radio-group label`);
+        const radioInputs = document.querySelectorAll(`input[type='radio'][name='${groupName}']`);
+
+        radioInputs.forEach(radio => {
+            radio.addEventListener('change', function() {
+                radioLabels.forEach(label => {
+                    if (label.contains(radio)) {
+                        label.classList.add("selected");
+                    } else {
+                        label.classList.remove("selected");
+                    }
+                });
+            });
+        });
+    });
+});

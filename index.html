@@ -300,6 +300,138 @@
         <th><input type="text" id="total-score-charlson" name="21-diem-charlson" readonly></th>
     </tr>
 </table>
+<h2>22. Đánh giá hoạt động thể lực</h2>
+
+    <table>
+        <tr>
+            <th>Loại</th>
+            <th>Câu trả lời</th>
+            <th>Ghi chú</th>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>
+                <label><input type="radio" name="answerP1" value="yes" onchange="showInput('numberInputP1')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP1" value="no" onchange="hideInput('numberInputP1')"> Không biết</label><br>
+                <label><input type="radio" name="answerP1" value="no_answer" onchange="hideInput('numberInputP1')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP1" min="1" max="7" placeholder="Nhập số từ 1 đến 7">
+            </td>
+        </tr>
+        <tr>
+            <td>P2</td>
+            <td>
+                <label><input type="radio" name="answerP2" value="yes" onchange="showInput('numberInputP2')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP2" value="no" onchange="hideInput('numberInputP2')"> Không biết</label><br>
+                <label><input type="radio" name="answerP2" value="no_answer" onchange="hideInput('numberInputP2')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP2" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P2a</td>
+            <td>
+                <label><input type="radio" name="answerP2a" value="yes" onchange="showInput('numberInputP2a')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP2a" value="no" onchange="hideInput('numberInputP2a')"> Không biết</label><br>
+                <label><input type="radio" name="answerP2a" value="no_answer" onchange="hideInput('numberInputP2a')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP2a" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P3</td>
+            <td>
+                <label><input type="radio" name="answerP3" value="yes" onchange="showInput('numberInputP3')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP3" value="no" onchange="hideInput('numberInputP3')"> Không biết</label><br>
+                <label><input type="radio" name="answerP3" value="no_answer" onchange="hideInput('numberInputP3')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP3" min="1" max="7" placeholder="Nhập số từ 1 đến 7">
+            </td>
+        </tr>
+        <tr>
+            <td>P4</td>
+            <td>
+                <label><input type="radio" name="answerP4" value="yes" onchange="showInput('numberInputP4')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP4" value="no" onchange="hideInput('numberInputP4')"> Không biết</label><br>
+                <label><input type="radio" name="answerP4" value="no_answer" onchange="hideInput('numberInputP4')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP4" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P4a</td>
+            <td>
+                <label><input type="radio" name="answerP4a" value="yes" onchange="showInput('numberInputP4a')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP4a" value="no" onchange="hideInput('numberInputP4a')"> Không biết</label><br>
+                <label><input type="radio" name="answerP4a" value="no_answer" onchange="hideInput('numberInputP4a')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP4a" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P5</td>
+            <td>
+                <label><input type="radio" name="answerP5" value="yes" onchange="showInput('numberInputP5')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP5" value="no" onchange="hideInput('numberInputP5')"> Không biết</label><br>
+                <label><input type="radio" name="answerP5" value="no_answer" onchange="hideInput('numberInputP5')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP5" min="1" max="7" placeholder="Nhập số từ 1 đến 7">
+            </td>
+        </tr>
+        <tr>
+            <td>P6</td>
+            <td>
+                <label><input type="radio" name="answerP6" value="yes" onchange="showInput('numberInputP6')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP6" value="no" onchange="hideInput('numberInputP6')"> Không biết</label><br>
+                <label><input type="radio" name="answerP6" value="no_answer" onchange="hideInput('numberInputP6')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP6" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P6a</td>
+            <td>
+                <label><input type="radio" name="answerP6a" value="yes" onchange="showInput('numberInputP6a')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP6a" value="no" onchange="hideInput('numberInputP6a')"> Không biết</label><br>
+                <label><input type="radio" name="answerP6a" value="no_answer" onchange="hideInput('numberInputP6a')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP6a" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P7</td>
+            <td>
+                <label><input type="radio" name="answerP7" value="yes" onchange="showInput('numberInputP7')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP7" value="no" onchange="hideInput('numberInputP7')"> Không biết</label><br>
+                <label><input type="radio" name="answerP7" value="no_answer" onchange="hideInput('numberInputP7')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP7" placeholder="Số Phút">
+            </td>
+        </tr>
+        <tr>
+            <td>P7a</td>
+            <td>
+                <label><input type="radio" name="answerP7a" value="yes" onchange="showInput('numberInputP7a')"> Trả lời</label><br>
+                <label><input type="radio" name="answerP7a" value="no" onchange="hideInput('numberInputP7a')"> Không biết</label><br>
+                <label><input type="radio" name="answerP7a" value="no_answer" onchange="hideInput('numberInputP7a')"> Không trả lời</label>
+            </td>
+            <td>
+                <input type="number" class="input-number" id="numberInputP7a" placeholder="Số Phút">
+            </td>
+        </tr>
+
+    </table>
+
 <h2>III. ĐÁNH GIÁ THIẾU CƠ – LOÃNG XƯƠNG:</h2>
 
 <h3>23. Mật độ xương:</h3>
